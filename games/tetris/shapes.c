@@ -1,8 +1,8 @@
-/*	$NetBSD: shapes.c,v 1.8 2009/05/25 04:33:53 dholland Exp $	*/
+/*    $NetBSD: shapes.c,v 1.8 2009/05/25 04:33:53 dholland Exp $    */
 
 /*-
  * Copyright (c) 1992, 1993
- *	The Regents of the University of California.  All rights reserved.
+ *    The Regents of the University of California.  All rights reserved.
  *
  * This code is derived from software contributed to Berkeley by
  * Chris Torek and Darren F. Provine.
@@ -31,7 +31,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- *	@(#)shapes.c	8.1 (Berkeley) 5/31/93
+ *    @(#)shapes.c    8.1 (Berkeley) 5/31/93
  */
 
 /*
@@ -43,35 +43,35 @@
 #include <sys/cdefs.h>
 #include "tetris.h"
 
-#define	TL	-B_COLS-1	/* top left */
-#define	TC	-B_COLS		/* top center */
-#define	TR	-B_COLS+1	/* top right */
-#define	ML	-1		/* middle left */
-#define	MR	1		/* middle right */
-#define	BL	B_COLS-1	/* bottom left */
-#define	BC	B_COLS		/* bottom center */
-#define	BR	B_COLS+1	/* bottom right */
+#define    TL    -B_COLS-1    /* top left */
+#define    TC    -B_COLS        /* top center */
+#define    TR    -B_COLS+1    /* top right */
+#define    ML    -1        /* middle left */
+#define    MR    1        /* middle right */
+#define    BL    B_COLS-1    /* bottom left */
+#define    BC    B_COLS        /* bottom center */
+#define    BR    B_COLS+1    /* bottom right */
 
 const struct shape shapes[] = {
-	/* 0*/	{ 7,	{ TL, TC, MR, } },
-	/* 1*/	{ 8,	{ TC, TR, ML, } },
-	/* 2*/	{ 9,	{ ML, MR, BC, } },
-	/* 3*/	{ 3,	{ TL, TC, ML, } },
-	/* 4*/	{ 12,	{ ML, BL, MR, } },
-	/* 5*/	{ 15,	{ ML, BR, MR, } },
-	/* 6*/	{ 18,	{ ML, MR, 2   } },	/* sticks out */
-	/* 7*/	{ 0,	{ TC, ML, BL, } },
-	/* 8*/	{ 1,	{ TC, MR, BR, } },
-	/* 9*/	{ 10,	{ TC, MR, BC, } },
-	/*10*/	{ 11,	{ TC, ML, MR, } },
-	/*11*/	{ 2,	{ TC, ML, BC, } },
-	/*12*/	{ 13,	{ TC, BC, BR, } },
-	/*13*/	{ 14,	{ TR, ML, MR, } },
-	/*14*/	{ 4,	{ TL, TC, BC, } },
-	/*15*/	{ 16,	{ TR, TC, BC, } },
-	/*16*/	{ 17,	{ TL, MR, ML, } },
-	/*17*/	{ 5,	{ TC, BC, BL, } },
-	/*18*/	{ 6,	{ TC, BC, 2*B_COLS } }	/* sticks out */
+    /* 0*/  { 7,    { TL, TC, MR, } },
+    /* 1*/  { 8,    { TC, TR, ML, } },
+    /* 2*/  { 9,    { ML, MR, BC, } },
+    /* 3*/  { 3,    { TL, TC, ML, } },
+    /* 4*/  { 12,   { ML, BL, MR, } },
+    /* 5*/  { 15,   { ML, BR, MR, } },
+    /* 6*/  { 18,   { ML, MR, 2   } },    /* sticks out */
+    /* 7*/  { 0,    { TC, ML, BL, } },
+    /* 8*/  { 1,    { TC, MR, BR, } },
+    /* 9*/  { 10,   { TC, MR, BC, } },
+    /*10*/  { 11,   { TC, ML, MR, } },
+    /*11*/  { 2,    { TC, ML, BC, } },
+    /*12*/  { 13,   { TC, BC, BR, } },
+    /*13*/  { 14,   { TR, ML, MR, } },
+    /*14*/  { 4,    { TL, TC, BC, } },
+    /*15*/  { 16,   { TR, TC, BC, } },
+    /*16*/  { 17,   { TL, MR, ML, } },
+    /*17*/  { 5,    { TC, BC, BL, } },
+    /*18*/  { 6,    { TC, BC, 2*B_COLS } }    /* sticks out */
 };
 
 /*
@@ -81,12 +81,12 @@ const struct shape shapes[] = {
 int
 fits_in(const struct shape *shape, int pos)
 {
-	const int *o = shape->off;
+    const int *o = shape->off;
 
-	if (board[pos] || board[pos + *o++] || board[pos + *o++] ||
-	    board[pos + *o])
-		return 0;
-	return 1;
+    if (board[pos] || board[pos + *o++] || board[pos + *o++] ||
+        board[pos + *o])
+        return 0;
+    return 1;
 }
 
 /*
@@ -96,10 +96,10 @@ fits_in(const struct shape *shape, int pos)
 void
 place(const struct shape *shape, int pos, int onoff)
 {
-	const int *o = shape->off;
+    const int *o = shape->off;
 
-	board[pos] = onoff;
-	board[pos + *o++] = onoff;
-	board[pos + *o++] = onoff;
-	board[pos + *o] = onoff;
+    board[pos] = onoff;
+    board[pos + *o++] = onoff;
+    board[pos + *o++] = onoff;
+    board[pos + *o] = onoff;
 }
